@@ -20,7 +20,7 @@ from .views import index, article_detail, add_like, registration
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',index, name="index"),
+    url(r'^$', index, name="index"),
     url(r'^registration/$', registration, name="registration"),
     url(r'^articles/(?P<article_id>\d+)/$', article_detail, name='article_detail'),
     url(r'^articles/(?P<article_id>\d+)/addlike/$', add_like, name='add_like'),
