@@ -14,6 +14,11 @@
 		<input type="text" name="text" placeholder="Enter text">
 		<input type="submit" value="Add article">
 	</form>
+	{% for article in articles %}
+		<p>{{ article.article_title }}</p>
+		<p>{{ article.article_text }}</p>
+		<p>{{ article.article_date }}</p>
+	{% endfor %}
 </body>
 
 </html>
