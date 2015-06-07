@@ -19,7 +19,7 @@ def index(request):
 def addlike (request, article_id):
 	try:
 		article = Article.objects.get(id=article_id)
-		article.article_like += 1
+		article.article_likes += 1
 		article.save()	
 	except ObjectDoesNotExist:
 		raise Http404
