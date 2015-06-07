@@ -1,0 +1,13 @@
+.decoration:hover{
+	text-decoration: none;
+}
+.decoration:visited{
+	text-decoration: none;
+}
+.decoration:active{
+	text-decoration: none;
+}
+.decoration:focus{
+	text-decoration: none;
+}
+
