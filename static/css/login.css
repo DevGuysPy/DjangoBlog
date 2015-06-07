@@ -1,0 +1,26 @@
+#id_username,
+#id_password {
+    display: block;
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    margin: 20px auto;
+    max-width: 350px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+label {
+    font-weight: normal;
+}

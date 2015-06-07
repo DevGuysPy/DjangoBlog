@@ -1,29 +1,28 @@
 {% load staticfiles %}
-
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
+
 <body>
-	<form class="col-md-12">
-    <div class="form-group">
-        <input type="text" class="form-control input-lg" placeholder="Email">
+    <div class="container">
+        <div class="login-form">
+            <form class="form-signin" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+                    {{ form.username.label_tag }} 
+                    {{ form.username }}
+                    {{ form.password.label_tag }} 
+                    {{ form.password }}
+                <div class="text-center">
+                    <input type="submit" class="btn btn-default" value="Sign In " />
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <input type="password" class="form-control input-lg" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-        <span><a href="#">Need help?</a></span>
-        <span class="pull-right"><a href="#">New Registration</a></span>
-    </div>
-</form>
-</body>
+
 </html>
