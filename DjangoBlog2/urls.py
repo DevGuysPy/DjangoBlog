@@ -20,4 +20,5 @@ from .views import index
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',index)
+    url(r'^articles/addlike/(?P<article_id>\d+)/$', 'article.views.addlike'),
 ]

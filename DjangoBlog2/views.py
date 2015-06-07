@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
+from django.core.exceptions import ObjectDoesNotExist
 
 def index(request):
 	
@@ -14,4 +15,13 @@ def index(request):
 	}
 
 	return render(request, 'index.html', ctx)
+	
+def addlike (request, article_id):
+	try:
+		article = Article.objects.get(id=article_id)
+		article.article_like += 1
+		article.save()	
+	except ObjectDoesNotExist:
+		raise Http404
+	return redirect('articles/addlike/')	
 
