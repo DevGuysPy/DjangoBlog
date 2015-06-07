@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Article
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404, JsonResponse
+from django.contrib.auth.models import User
 
 def index(request):
     if request.method == "POST":
@@ -9,7 +10,8 @@ def index(request):
         new_article_text = request.POST['text']
         Article.objects.create(
             title=new_article_title,
-            text=new_article_text)
+            text=new_article_text
+            author=request.user)
     ctx = {
         'articles' : reversed(Article.objects.all()),
     }
@@ -33,4 +35,6 @@ def add_like(request, article_id):
 
 def article_detail(request, article_id):
     pass
+
+def registration(request):
 
