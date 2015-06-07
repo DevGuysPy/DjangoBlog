@@ -8,10 +8,7 @@ def index(request):
     if request.method == "POST":
         new_article_title = request.POST['title']
         new_article_text = request.POST['text']
-        Article.objects.create(
-            title=new_article_title,
-            text=new_article_text,
-            author=request.user)
+        Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
     ctx = {
         'articles' : reversed(Article.objects.all()),
     }
@@ -37,4 +34,4 @@ def article_detail(request, article_id):
     pass
 
 def registration(request):
-
+	pass
