@@ -1,12 +1,8 @@
 .registration-form {
     margin: 20px auto;
     max-width: 350px;
-    padding: 10px;
-    background-color:#ecf0f1;
+    max-height: 500px; 
 }
-.panel-title{
-	background-color:#ecf0f1;
-}
-.margin-for-input{
-	margin-top: 25px;
+.margin {
+	margin-top: 15px;
 }
