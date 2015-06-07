@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from .views import index, article_detail, add_like
+from .views import index, article_detail, add_like, registration
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',index, name="index"),
+    url(r'^registration/$', registration, name="registration"),
     url(r'^articles/(?P<article_id>\d+)/$', article_detail, name='article_detail'),
     url(r'^articles/(?P<article_id>\d+)/addlike/$', add_like, name='add_like'),
     url(r'^', include('django.contrib.auth.urls')),

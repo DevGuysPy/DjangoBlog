@@ -34,4 +34,4 @@ def article_detail(request, article_id):
     pass
 
 def registration(request):
-	pass
+	return render(request, 'registration/registration.html')
