@@ -9,22 +9,24 @@
 </head>
 
 <body>
-    <h1>DevGuys Blog</h1>
-    <form method="POST" action="">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Enter title">
-        <input type="text" name="text" placeholder="Enter text">
-        <input type="submit" value="Add article">
-    </form>
-    {% for article in articles %}
-        <div id="{{ article.id }}">
-            <p>{{ article.title }}</p>
-            <p>{{ article.text }}</p>
-            <p>{{ article.date }}</p>
-            <span class="likes">{{ article.likes }}</span> liked this.
-            <button class="btn btn-default like">Like!</button>
-        </div>
-    {% endfor %}
+	<div class="container">
+	    <h1>DevGuys Blog</h1>
+	    <form method="POST" action="">
+	        {% csrf_token %}
+	        <input type="text" name="title" placeholder="Enter title">
+	        <input type="text" name="text" placeholder="Enter text">
+	        <input type="submit" value="Add article">
+	    </form>
+	    {% for article in articles %}
+	        <div id="{{ article.id }}">
+	            <p>{{ article.title }}</p>
+	            <p>{{ article.text }}</p>
+	            <p>{{ article.date }}</p>
+	            <span class="likes">{{ article.likes }}</span> liked this.
+	            <button class="btn btn-default like">Like!</button>
+	        </div>
+	    {% endfor %}
+    </div>
 </body>
 <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
 <script src="{% static 'js/article.js' %}"></script>
