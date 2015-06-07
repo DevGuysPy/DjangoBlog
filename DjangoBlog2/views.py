@@ -10,7 +10,7 @@ def index(request):
         new_article_text = request.POST['text']
         Article.objects.create(
             title=new_article_title,
-            text=new_article_text
+            text=new_article_text,
             author=request.user)
     ctx = {
         'articles' : reversed(Article.objects.all()),
