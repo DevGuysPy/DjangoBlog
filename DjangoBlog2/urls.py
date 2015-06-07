@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+
 from .views import index
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',index)
+    url(r'^$',index),
     url(r'^articles/addlike/(?P<article_id>\d+)/$', 'article.views.addlike'),
+    url(r'^', include('django.contrib.auth.urls')),
 ]
