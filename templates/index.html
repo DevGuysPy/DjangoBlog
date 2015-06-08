@@ -43,9 +43,10 @@
     <div class="container">
         <h1>DevGuys Blog</h1>
         {% for article in articles %}
-        <div id="{{ article.id }}">
+        <div class="well">
+            <div id="{{ article.id }}">
             <h3><a href='articles/{{article.id}}/'>{{ article.title }}</h3></a>
-            <p>{{ article.date }}</p>
+            <hr>   
             <p>{{ article.author }}</p>
             <span class="likes">{{ article.likes }}</span> liked this.
             {% if user.is_authenticated %}
@@ -53,8 +54,12 @@
                 <span>Like</span>
                 <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
             </a>
+            <hr>
+            <p class="text-right">{{ article.date }}</p>
             {% endif %}
+            </div>
         </div>
+        
         {% endfor %}
     </div>
 </body>
