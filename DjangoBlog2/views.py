@@ -35,8 +35,9 @@ def article_detail(request, article_id=1):
     return render_to_response ('article.html', {'article': Article.objects.get(id = article_id)})
 
 def registration(request):
-    user_name = request.POST.get['username']
-    email_adress = request.POST.get['email']
-    password = request.POST.get['password']
-    User.objects.user(username=user_name, email=email_adress, password=password)
+    if request.method == "POST":
+        user_name = request.POST.get['username']
+        email_address = request.POST.get['email']
+        password = request.POST.get['password']
+        User.objects.create.user(username=user_name, email=email_address, password=password)
     return render(request, 'registration/registration.html')
