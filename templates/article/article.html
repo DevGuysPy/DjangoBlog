@@ -1,14 +1,11 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<meta charset="UTF-8">
+	<title>Article</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
@@ -24,14 +21,6 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../registration/">Registration</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="../logout/">Logout</a></li>
-                    {% else %}
-                    <li><a href="../login/">Login</a></li>
-                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -54,6 +43,7 @@
         {% for article in articles %}
         <div id="{{ article.id }}">
             <h3>{{ article.title }}</h3>
+            <p>{{ article.text }}</p>
             <p>{{ article.date }}</p>
             <p>{{ article.author }}</p>
             <span class="likes">{{ article.likes }}</span> liked this.
@@ -63,9 +53,6 @@
             </a>
         </div>
         {% endfor %}
-    </div>
+		</div>
 </body>
-<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
-<script src="{% static 'js/article.js' %}"></script>
-
 </html>
