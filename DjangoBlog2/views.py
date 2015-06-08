@@ -5,7 +5,7 @@ from django.http.response import Http404, JsonResponse
 from django.contrib.auth.models import User
 
 def index(request):
-    
+    # Article.objects.all().delete()
     ctx = {
         'articles' : reversed(Article.objects.all()),
     }

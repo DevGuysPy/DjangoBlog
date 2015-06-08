@@ -24,9 +24,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
-                    {% if user.is_authenticated %}
                         <li><a href="../new/">Create new article</a></li>
-                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">          
                     {% if user.is_authenticated %}
@@ -42,9 +40,6 @@
 
     <div class="container">
         <h1>DevGuys Blog</h1>
-
-        
-
         {% for article in articles %}
         <div id="{{ article.id }}">
             <h3><a href='articles/{{article.id}}/'>{{ article.title }}</h3></a>
