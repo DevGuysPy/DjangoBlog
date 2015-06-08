@@ -9,6 +9,7 @@ def index(request):
         new_article_title = request.POST['title']
         new_article_text = request.POST['text']
         Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
+
     ctx = {
         'articles' : reversed(Article.objects.all()),
     }
@@ -32,7 +33,6 @@ def add_like(request, article_id):
 
 def article_detail(request, article_id=1):
     return render_to_response ('article.html', {'article': Article.objects.get(id = article_id)})
-def registration(request):
-	return render(request, 'registration/registration.html')
 
-    
+def registration(request):
+    return render(request, 'registration/registration.html')

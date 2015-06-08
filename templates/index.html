@@ -53,7 +53,7 @@
 
         {% for article in articles %}
         <div id="{{ article.id }}">
-            <h3><a href='articles/get/{{article.id}}/'>{{ article.title }}</h3></a>
+            <h3><a href='articles/{{article.id}}/'>{{ article.title }}</h3></a>
             <p>{{ article.date }}</p>
             <p>{{ article.author }}</p>
             <span class="likes">{{ article.likes }}</span> liked this.
