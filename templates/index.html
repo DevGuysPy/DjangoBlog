@@ -48,7 +48,7 @@
                 <input type="submit" value="Add article">
             </form>
         {% else %}
-            <div class="alert alert-warning text-center" role="alert">To add new message - please log in</div>
+            <div class="alert alert-warning text-center" role="alert">To add new articles - please <a href="../login/">log in</a></div>
         {% endif %}
 
         {% for article in articles %}
