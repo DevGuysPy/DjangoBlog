@@ -1,10 +1,10 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Article</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>Article</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -21,39 +21,30 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class=""><a href="/">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li><a href="../../logout/">Logout</a></li>
+                    {% else %}
+                    <li><a href="../../registration/">Registration</a></li>
+                    <li><a href="../../login/">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="container">
-        <h1>DevGuys Blog</h1>
-
-        {% if user.is_authenticated %}
-            <form method="POST" action="">
-                {% csrf_token %}
-                <input type="text" name="title" placeholder="Enter title">
-                <input type="text" name="text" placeholder="Enter text">
-                <input type="submit" value="Add article">
-            </form>
-        {% else %}
-            <div class="alert alert-warning text-center" role="alert">To add new message - please log in</div>
-        {% endif %}
-
-        {% for article in articles %}
-        <div id="{{ article.id }}">
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.text }}</p>
-            <p>{{ article.date }}</p>
-            <p>{{ article.author }}</p>
-            <span class="likes">{{ article.likes }}</span> liked this.
-            <a class="like decoration" href="#">
-                <span>Like</span>
-                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-            </a>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ article.title }}</h3> 
+                </div>
+                <div class="panel-body">
+                    <p><strong>{{ article.author }}</strong></p>
+                    <p class="text-justify">{{ article.text }}</p>
+                    <p class="text-right">{{ article.date }}</p>
+                </div>
+            </div>
         </div>
-        {% endfor %}
-		</div>
 </body>
 </html>
