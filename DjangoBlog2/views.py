@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from .models import Article
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404, JsonResponse
@@ -30,8 +30,9 @@ def add_like(request, article_id):
     # return redirect('articles/addlike/')
 
 
-def article_detail(request, article_id):
-    pass
-
+def article_detail(request, article_id=1):
+    return render_to_response ('article.html', {'article': Article.objects.get(id = article_id)})
 def registration(request):
 	return render(request, 'registration/registration.html')
+
+    
