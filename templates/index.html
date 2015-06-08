@@ -57,10 +57,12 @@
             <p>{{ article.date }}</p>
             <p>{{ article.author }}</p>
             <span class="likes">{{ article.likes }}</span> liked this.
+            {% if user.is_authenticated %}
             <a class="like decoration" href="#">
                 <span>Like</span>
                 <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
             </a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
