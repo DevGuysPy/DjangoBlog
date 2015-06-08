@@ -39,10 +39,11 @@
 
     <div class="container">
         <h1>DevGuys Blog</h1>
+
         {% if user.is_authenticated %}
             <form method="POST" action="">
                 {% csrf_token %}
-                <input type="text" class="span2" name="title" placeholder="Enter name">
+                <input type="text" name="title" placeholder="Enter title">
                 <input type="text" name="text" placeholder="Enter text">
                 <input type="submit" value="Add article">
             </form>
@@ -55,12 +56,8 @@
             <h3><a href='articles/{{article.id}}/'>{{ article.title }}</h3></a>
             <p>{{ article.date }}</p>
             <p>{{ article.author }}</p>
-<<<<<<< HEAD
             <span class="likes">{{ article.likes }}</span> liked this.
             {% if user.is_authenticated %}
-=======
-            <span class="likes text-right">{{ article.likes }}</span> liked this.
->>>>>>> article + styles for artcile
             <a class="like decoration" href="#">
                 <span>Like</span>
                 <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
