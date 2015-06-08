@@ -39,11 +39,10 @@
 
     <div class="container">
         <h1>DevGuys Blog</h1>
-
         {% if user.is_authenticated %}
             <form method="POST" action="">
                 {% csrf_token %}
-                <input type="text" name="title" placeholder="Enter title">
+                <input type="text" class="span2" name="title" placeholder="Enter name">
                 <input type="text" name="text" placeholder="Enter text">
                 <input type="submit" value="Add article">
             </form>
