@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Django</title>
+    <title>Home</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
@@ -26,47 +26,40 @@
                     <li class="active"><a href="/">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                	<li><a href="../registration/">Registration</a></li>
+                    <li><a href="../registration/">Registration</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="../logout/">Logout</a></li>
+                    {% else %}
                     <li><a href="../login/">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
+    <div class="container">
+        <h1>DevGuys Blog</h1> {% if user.is_authenticated %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter title">
+            <input type="text" name="text" placeholder="Enter text">
+            <input type="submit" value="Add article">
+        </form>
+        {% endif %} 
 
-	<div class="container">
-{% if user.is_authenticated %}  
-	    <h1>DevGuys Blog</h1>
-	    <form method="POST" action="">
-	        {% csrf_token %}
-	        <input type="text" name="title" placeholder="Enter title">
-	        <input type="text" name="text" placeholder="Enter text">
-	        <input type="submit" value="Add article">
-	    </form>
-	    {% for article in articles %}
-	        <div id="{{ article.id }}">
-	            <p>{{ article.title }}</p>
-	            <p>{{ article.text }}</p>
-	            <p>{{ article.date }}</p>
-	            <span class="likes">{{ article.likes }}</span> liked this.
-                <a  class="like decoration"href="#">
-                    <span>Like</span>
-                    <i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i>
-                </a>
-	        </div>
-	    {% endfor %}
-{% else %}
-    <div class="alert alert-warning text-center" role="alert">To add new message - please log in</div>
-            {% for article in articles %}
-            <div id="{{ article.id }}">
-                <p>{{ article.title }}</p>
-                <p>{{ article.text }}</p>
-                <p>{{ article.date }}</p>
-                <span class="likes">{{ article.likes }}</span> liked this.
-            </div>
+        {% for article in articles %}
+        <div id="{{ article.id }}">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.text }}</p>
+            <p>{{ article.date }}</p>
+            <p>{{ article.author }}</p>
+            <span class="likes">{{ article.likes }}</span> liked this.
+            <a class="like decoration" href="#">
+                <span>Like</span>
+                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+            </a>
+        </div>
         {% endfor %}
-{% endif %}
-    </div>
 </body>
 <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
 <script src="{% static 'js/article.js' %}"></script>
