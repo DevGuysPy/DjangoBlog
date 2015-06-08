@@ -17,3 +17,11 @@
 	background-color: #2980b9;
 	margin-top: 5px;
 }
+.form-control1{
+	max-width: 1140px;
+	max-height: 600px;
+	margin-top: 5px;
+}
+.margin-for-btn {
+	margin-top: 8px;
+}
