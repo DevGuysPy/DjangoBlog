@@ -26,7 +26,7 @@
                     <li class="active"><a href="/">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="new/">Create new article</a></li>
+                    <li class="active"><a href="/">Create new article</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../registration/">Registration</a></li>
@@ -39,29 +39,15 @@
             </div>
         </div>
     </nav>
-
-    <div class="container">
-        <h1>DevGuys Blog</h1>
-
-        
-
-        {% for article in articles %}
-        <div id="{{ article.id }}">
-            <h3><a href='articles/{{article.id}}/'>{{ article.title }}</h3></a>
-            <p>{{ article.date }}</p>
-            <p>{{ article.author }}</p>
-            <span class="likes">{{ article.likes }}</span> liked this.
-            {% if user.is_authenticated %}
-            <a class="like decoration" href="#">
-                <span>Like</span>
-                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-            </a>
-            {% endif %}
-        </div>
-        {% endfor %}
-    </div>
+    {% if user.is_authenticated %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Enter title">
+                <input type="text" name="text" placeholder="Enter text">
+                <input type="submit" value="Add article">
+            </form>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">To add new articles - please <a href="../login/">log in</a></div>
+        {% endif %}
 </body>
-<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
-<script src="{% static 'js/article.js' %}"></script>
-
 </html>

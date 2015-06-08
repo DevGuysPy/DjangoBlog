@@ -5,16 +5,19 @@ from django.http.response import Http404, JsonResponse
 from django.contrib.auth.models import User
 
 def index(request):
-    if request.method == "POST":
-        new_article_title = request.POST['title']
-        new_article_text = request.POST['text']
-        Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
-
+    
     ctx = {
         'articles' : reversed(Article.objects.all()),
     }
 
     return render(request, 'index.html', ctx)
+def new_article(request):  
+    if request.method == "POST":
+        new_article_title = request.POST['title']
+        new_article_text = request.POST['text']
+        Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
+    return render(request, 'new_article.html')
+
 
 
 def add_like(request, article_id):
@@ -39,7 +42,6 @@ def registration(request):
         user_name = request.POST['username']
         email_address = request.POST['email']
         password = request.POST['password']
-
         User.objects.create_user(username=user_name, email=email_address, password=password)
 
     return render(request, 'registration/registration.html')
