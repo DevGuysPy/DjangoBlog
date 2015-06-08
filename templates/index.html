@@ -38,14 +38,18 @@
     </nav>
 
     <div class="container">
-        <h1>DevGuys Blog</h1> {% if user.is_authenticated %}
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input type="text" name="title" placeholder="Enter title">
-            <input type="text" name="text" placeholder="Enter text">
-            <input type="submit" value="Add article">
-        </form>
-        {% endif %} 
+        <h1>DevGuys Blog</h1>
+
+        {% if user.is_authenticated %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Enter title">
+                <input type="text" name="text" placeholder="Enter text">
+                <input type="submit" value="Add article">
+            </form>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">To add new message - please log in</div>
+        {% endif %}
 
         {% for article in articles %}
         <div id="{{ article.id }}">
@@ -60,6 +64,7 @@
             </a>
         </div>
         {% endfor %}
+    </div>
 </body>
 <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
 <script src="{% static 'js/article.js' %}"></script>
