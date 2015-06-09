@@ -43,6 +43,6 @@ def registration(request):
         email_address = request.POST['email']
         password = request.POST['password']
         User.objects.create_user(username=user_name, email=email_address, password=password)
-        return redirect ('/')
+        return redirect ('/login/')
 
     return render(request, 'registration/registration.html')
