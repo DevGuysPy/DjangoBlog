@@ -25,15 +25,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="/"><strong>Home</strong></a></li>
-                    <li class="active"><a href="../new/"><strong>Create new article</strong></a></li>
+                    <li class=""><a href="/"><strong>DevGuys</strong></a></li>
+                    <li class="active"><a href="../new/"><strong>Створити нове повідомлення</strong></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">          
                     {% if user.is_authenticated %}
-                        <li><a href="../logout/"><strong>Logout</strong></a></li>
+                        <li><a href="../logout/"><strong>Вийти</strong></a></li>
                     {% else %}
-                        <li><a href="../registration/">Registration</a></li>
-                        <li><a href="../login/">Login</a></li>      
+                        <li><a href="../registration/"><strong>Регістрація</strong></a></li>
+                        <li><a href="../login/"><strong>Логін</strong></a></li>      
                     {% endif %}
                 </ul>
             </div>
@@ -49,7 +49,7 @@
             </form>
         {% else %}
             <div class="alert alert-danger text-center" role="alert">
-                <p>To add new articles - please <a href="../login/">login</p></a>
+                <p>Щоб додати нові повідомлення - будь ласка, увійдіть <a href="../login/">login</p></a>
             </div>
         {% endif %}
     </div>
