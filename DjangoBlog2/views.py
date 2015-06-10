@@ -3,6 +3,7 @@ from .models import Article
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404, JsonResponse
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 def index(request):
     # Article.objects.all().delete()
@@ -16,7 +17,8 @@ def new_article(request):
     if request.method == "POST":
         new_article_title = request.POST['title']
         new_article_text = request.POST['text']
-        Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
+        article = Article.objects.create(title=new_article_title, text=new_article_text, author=request.user)
+        return redirect('article_detail', article_id=article.id)
     return render(request, 'new_article.html')
 
 
