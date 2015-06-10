@@ -11,6 +11,7 @@ def index(request):
     }
 
     return render(request, 'index.html', ctx)
+
 def new_article(request):  
     if request.method == "POST":
         new_article_title = request.POST['title']
@@ -43,6 +44,6 @@ def registration(request):
         email_address = request.POST['email']
         password = request.POST['password']
         User.objects.create_user(username=user_name, email=email_address, password=password)
-        return redirect ('/login/')
+        return redirect('../login/')
 
     return render(request, 'registration/registration.html')
