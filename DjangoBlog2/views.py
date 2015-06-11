@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, render_to_response
-from .models import Article
+from .models import Article, Comments
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404, JsonResponse
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+
+
 
 def index(request):
     # Article.objects.all().delete()
@@ -38,7 +40,12 @@ def add_like(request, article_id):
 
 
 def article_detail(request, article_id=1):
-    return render_to_response ('article.html', {'article': Article.objects.get(id = article_id)})
+    ctx = {
+        'article': Article.objects.get(id = article_id),
+        'comments': Comments.objects.filter(comment_article_id=article_id),
+    }
+    
+    return render(request, 'article.html', ctx)
 
 def registration(request):
     if request.method == "POST":
@@ -49,3 +56,10 @@ def registration(request):
         return redirect('../login/')
 
     return render(request, 'registration/registration.html')
+def add_comment(request):
+    if request.method == "POST":
+        new_comment_text = request.POST['comment_text']
+        comment = Comments.objects.create(comment_text=new_comment_text)
+        return redirect('/')
+    return render(request, 'article.html')
+
