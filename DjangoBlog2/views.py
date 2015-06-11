@@ -41,7 +41,7 @@ def add_like(request, article_id):
 
 def article_detail(request, article_id=1):
     ctx = {
-        'article': Article.objects.get(id = article_id),
+        'article': Article.objects.get(id=article_id),
         'comments': Comments.objects.filter(comment_article_id=article_id),
     }
     
@@ -56,10 +56,12 @@ def registration(request):
         return redirect('../login/')
 
     return render(request, 'registration/registration.html')
-def add_comment(request):
+
+def add_comment(request, article_id):
+    article = Article.objects.get(id=article_id)
     if request.method == "POST":
         new_comment_text = request.POST['comment_text']
-        comment = Comments.objects.create(comment_text=new_comment_text)
-        return redirect('/')
-    return render(request, 'article.html')
+        Comments.objects.create(comment_text=new_comment_text, comment_article_id=article_id)
+        return redirect('article_detail', article_id=article.id) 
 
+    return render(request, 'article.html')

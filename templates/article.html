@@ -47,19 +47,20 @@
                     <p class="text-right">{{ article.date }}</p>
                 </div>
             </div>
-            <div><p>Comments</p></div>
+            <div><p>Comments:</p></div>
             {% for comment in comments %}
-            <p>{{ comments.comment_text }}</p>
-            {% endfor%}
+            <p>{{ user.username }}: {{ comment.comment_text }}</p>
+            {% endfor %}          
+            
+            
             
             <form method="POST" action="addcomment/">
                 {% csrf_token %}
                     <textarea class="form-control form-control1" rows="3" placeholder="Enter text" name="comment_text"></textarea>
                     <input type='submit' class='button' value = 'Done'>
-            
-                
             </form>
                 
         </div>
+
 </body>
 </html>
