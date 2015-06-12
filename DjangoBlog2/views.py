@@ -32,7 +32,7 @@ def add_like(request, article_id):
         article = Article.objects.get(id=article_id)
         if current_user.is_authenticated():
             user_likes = request.user.article_likes
-            if article not in user_likes:
+            if article not in user_likes.all():
                 user_likes.add(article)
             else:
                 user_likes.remove(article)
@@ -42,7 +42,7 @@ def add_like(request, article_id):
 
     return JsonResponse({
         'status': 'OK',
-        'count': len(article.likes)
+        'count': len(article.likes.all())
     })
     # return redirect('articles/addlike/')
 
