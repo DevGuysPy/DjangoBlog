@@ -24,29 +24,25 @@ def new_article(request):
     return render(request, 'new_article.html')
 
 
-users_liked = [] # for testing purposes
+
 
 def add_like(request, article_id):
     current_user = request.user
     try:
         article = Article.objects.get(id=article_id)
-        if current_user.is_authenticated() and not current_user.id in users_liked:
-
-            article.likes += 1
-
-            users_liked.append(current_user.id)
-            article.save()
-        else:
-            article.likes -= 1
-            users_liked.remove(current_user.id)
-            article.save()
-
-
+        if current_user.is_authenticated():
+            user_likes = request.user.article_likes
+            if article not in user_likes:
+                user_likes.add(article)
+            else:
+                user_likes.remove(article)
+            request.user.save()
     except ObjectDoesNotExist:
         raise Http404()
+
     return JsonResponse({
         'status': 'OK',
-        'count': article.likes
+        'count': len(article.likes)
     })
     # return redirect('articles/addlike/')
 
