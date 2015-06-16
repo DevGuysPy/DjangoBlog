@@ -52,7 +52,7 @@
             <h3><a href='articles/{{article.id}}/'>{{ article.title }}</a></h3>
             <hr> 
             <p>{{ article.author }}</p>  
-            <span class="likes">{{ article.likes.all }}</span> liked this.
+            <span class="likes">{{ article.likes.all | length}}</span> liked this.
             {% if user.is_authenticated %}
             <a class="like decoration margin" href="#">
                 <span>Like</span>
