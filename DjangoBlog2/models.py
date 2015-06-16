@@ -16,6 +16,7 @@ class Article(models.Model):
 class Comments(models.Model):
     comment_text = models.TextField()
     comment_article = models.ForeignKey(Article)
+    date = models.DateTimeField(auto_now_add=True) 
 
     class Meta():
         db_table = 'comments'

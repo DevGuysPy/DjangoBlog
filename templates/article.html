@@ -51,7 +51,12 @@
             </div>
             <div><p>Comments:</p></div>
             {% for comment in comments %}
-            <p>{{ user.username }}: {{ comment.comment_text }}</p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>{{ user.username }}: {{ comment.comment_text }}</p>
+                    <p>{{ comment.date }}</p>
+                </div>
+            </div>
             {% endfor %}          
             
             
