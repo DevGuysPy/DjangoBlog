@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from .views import index, article_detail, add_like, registration, new_article, add_comment
+from .views import index, article_detail, like_article, like_comment, registration, new_article, add_comment
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^new/$', new_article, name='new_article'),
     url(r'^registration/$', registration, name="registration"),
     url(r'^articles/(?P<article_id>\d+)/$', article_detail, name='article_detail'),
-    url(r'^articles/(?P<article_id>\d+)/addlike/$', add_like, name='add_like'),
+    url(r'^articles/(?P<article_id>\d+)/addlike/$', like_article, name='like_article'),
+    url(r'^articles/(?P<article_id>\d+)/comments/(?P<comment_id>\d+)/addlike/$', like_comment, name="like_comment"),
     url(r'^articles/(?P<article_id>\d+)/addcomment/$', add_comment, name='add_comment'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}, name='logout'),

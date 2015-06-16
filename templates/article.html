@@ -53,8 +53,17 @@
             {% for comment in comments %}
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>{{ user.username }}: {{ comment.comment_text }}</p>
-                    <p>{{ comment.date }}</p>
+                    <div id="{{ article.id }}">
+                        <div id="{{ comment.id }}">
+                            <p>{{ user.username }}: {{ comment.comment_text }}</p>
+                            <p>{{ comment.date }}</p>
+                            <span class="likes">{{ comment.likes.all | length}}</span> liked this.
+                            <a class="like_comment decoration margin" href="#">
+                                <span>Like</span>
+                                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}          
@@ -70,4 +79,6 @@
         </div>
 
 </body>
+<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
+<script src="{% static 'js/article.js' %}"></script>
 </html>

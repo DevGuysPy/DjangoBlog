@@ -45,26 +45,26 @@
     </nav>
 
     <div class="container margin1">
-        <h1><strong>DevGuys Blog</strong></h1>
-        {% for article in articles %}
+        <h1><strong>DevGuys Blog</strong></h1> {% for article in articles %}
         <div class="well">
             <div id="{{ article.id }}">
-            <h3><a href='articles/{{article.id}}/'>{{ article.title }}</a></h3>
-            <hr> 
-            <p>{{ article.author }}</p>  
-            <span class="likes">{{ article.likes.all | length}}</span> liked this.
-            {% if user.is_authenticated %}
-            <a class="like decoration margin" href="#">
-                <span>Like</span>
-                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-            </a>
-            {% endif %}
-            <hr>
-            <p class="text-right">{{ article.date }}</p>
+                <h3><a href='articles/{{article.id}}/'>{{ article.title }}</a></h3>
+                <hr>
+                <p>{{ article.author }}</p>
+                <span class="likes">{{ article.likes.all | length}}</span> liked this.
+                {% if user.is_authenticated %}
+                <a class="like decoration margin" href="#">
+                    <span>Like</span>
+                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                </a>
+                {% endif %}
+                <hr>
+                <p class="text-right">{{ article.date }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
+
 </body>
 <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
 <script src="{% static 'js/article.js' %}"></script>

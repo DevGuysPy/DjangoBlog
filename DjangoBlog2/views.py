@@ -26,7 +26,7 @@ def new_article(request):
 
 
 
-def add_like(request, article_id):
+def like_article(request, article_id):
     current_user = request.user
     try:
         article = Article.objects.get(id=article_id)
@@ -46,6 +46,25 @@ def add_like(request, article_id):
     })
     # return redirect('articles/addlike/')
 
+def like_comment(request, article_id, comment_id):
+    current_user = request.user
+    try:
+        comment = Comments.objects.get(id=comment_id)
+        if current_user.is_authenticated():
+            user_likes = current_user.comment_likes
+            if comment not in user_likes.all():
+                user_likes.add(comment)
+            else:
+                user_likes.remove(comment)
+            current_user.save()
+
+    except ObjectDoesNotExist:
+        raise Http404()
+
+    return JsonResponse({
+        'status': 'OK',
+        'count': len(comment.likes.all())
+    })
 
 def article_detail(request, article_id=1):
     ctx = {
