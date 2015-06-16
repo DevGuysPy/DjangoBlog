@@ -16,7 +16,6 @@ function comment_likeHandler() {
     var commentId = commentDiv.attr('id');
     var articleDiv = $(this).parent().parent();
     var articleId = articleDiv.attr('id');
-    alert('/articles/' + articleId + '/comments/' + commentId + '/addlike/');
 
     $.ajax({
         url: '/articles/' + articleId + '/comments/' + commentId + '/addlike/', // articles/3/addlike/
