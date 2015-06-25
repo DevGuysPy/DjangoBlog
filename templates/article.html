@@ -8,11 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="container">
-    <div class="row Anya">
-        <center><h1 class="bg"><strong><em><u>DevGuys</u></em></strong></h1></center>    
-    </div>
-    </div>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -25,7 +20,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="/"><strong>DevGuys</strong></a></li>
+                     <li><a href="/"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
@@ -73,7 +68,7 @@
             <form method="POST" action="addcomment/">
                 {% csrf_token %}
                     <textarea class="form-control form-control1" rows="3" placeholder="Enter text" name="comment_text"></textarea>
-                    <input type='submit' class='button' value = 'Done'>
+                    <input type='submit' class='button margin-for-btn' value = 'Додати коментар'>
             </form>
                 
         </div>

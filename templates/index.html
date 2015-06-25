@@ -10,13 +10,7 @@
 </head>
 
 <body>
-    <div class="container">
-    <div class="row Anya">
-        <center><h1 class="bg"><strong><em><u>DevGuys</u></em></strong></h1></center>    
-    </div>
-    </div>
-    
-    <nav class="navbar navbar-default">
+     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed"
@@ -29,7 +23,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/"><strong>DevGuys</strong></a></li>
+                    <li><a href="/"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></a></li>
                     <li><a href="../new/"><strong>Створити нове повідомлення</strong></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">          
@@ -45,7 +39,7 @@
     </nav>
 
     <div class="container margin1">
-        <h1><strong>DevGuys Blog</strong></h1> {% for article in articles %}
+        <h1 class="text-center"><strong>DevGuys Blog</strong></h1> {% for article in articles %}
         <div class="well">
             <div id="{{ article.id }}">
                 <h3><a href='articles/{{article.id}}/'>{{ article.title }}</a></h3>
